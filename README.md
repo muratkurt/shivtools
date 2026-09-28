@@ -52,6 +52,42 @@ shiv-ornek 02 MyPrefs      # copy one into a new folder
 
 Start from a working skeleton instead of an empty file. It refuses to write over an existing folder.
 
+## Working with an AI agent
+
+shivtools does not include an AI. It gives the one you already run in the terminal (Claude Code, Codex, Gemini…) eyes and hands on the device, and a set of rules learned the hard way.
+
+**1. Give the project the rules.** Make a folder for your tweak and drop the rules file in it — the agent reads it by itself when it starts there:
+
+```
+mkdir -p ~/Documents/MyTweak && cd ~/Documents/MyTweak
+shiv-kurulum
+```
+
+**2. Optional: let it see the screen.** With the iOS MCP package installed:
+
+```
+shiv-mcp baglan
+```
+
+prints one `claude mcp add …` line. Run it, then restart the CLI.
+
+**3. Start the CLI in that folder and say what you want.** Plain language is enough. Some first messages that work well:
+
+> Read CLAUDE.md, run `shiv-ortam`, and tell me what this device is ready for.
+
+> I want a SpringBoard tweak that hides the dock icon labels. Start from `shiv-ornek 01`, find the class with `shiv-sinif`, and measure before you change anything.
+
+> My tweak's Settings page is empty. Find out why — measure first, don't change code yet.
+
+> Remove the promoted items from the feed in this app. Look at the screen first and tell me which view or network response carries them.
+
+**While you work**
+
+- **You respring, not the agent.** It will ask. If the agent runs inside a terminal app on the phone, a respring closes it too — reopen the terminal and continue the session (`claude -c`).
+- **Tell it what you see.** A flicker or a wrong position rarely shows up in a log; describe it, or take a screen recording and `shiv-kare` turns frames into something it can read.
+- **Taps need your OK.** The agent may navigate on its own, but it asks before tapping anything that changes your account, and every time before anything that costs money.
+- **After a re-jailbreak** on RootHide, run `shiv-jbroot --yap` **before** starting the CLI, so your sessions and the agent's memory come back.
+
 ## Tools
 
 **Environment**
@@ -61,6 +97,7 @@ Start from a working skeleton instead of an empty file. It refuses to write over
 | `shiv-ortam` | Measures the environment. `--ajan-sina [pid]` checks the whole frida chain end to end |
 | `shiv-yol` | The same path in both namespaces (RootHide shell vs. real root) |
 | `shiv-kurulum` | Installs the rules file into a project |
+| `shiv-jbroot` | After a RootHide re-jailbreak, brings back your AI CLI sessions and memory. Dry run by default |
 
 **Finding the code to hook**
 
@@ -140,21 +177,26 @@ Open an [issue](../../issues/new). Include your device, iOS version, jailbreak, 
 
 ## Credits
 
-Built with [Claude Code](https://claude.com/claude-code) (Claude Opus 5.5).
+Built by muratkurt with [Claude Code](https://claude.com/claude-code) (Claude Opus 5.5).
 
-shivtools stands on these projects, each under its own licence:
-[Node.js](https://nodejs.org) (MIT) ·
-[nodejs-for-ios](https://github.com/realAndi/nodejs-for-ios) by andi (MIT) ·
-[frida](https://frida.re) (wxWindows 3.1) ·
-[iOS MCP](https://github.com/witchan/ios-mcp) by witchan (MIT) ·
-[PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) (Apache-2.0) ·
-[AppSync Unified](https://github.com/akemin-dayo/AppSync) (GPL-3.0) ·
-[ldid](https://git.saurik.com/ldid.git) (AGPL-3.0) ·
-[libplist](https://github.com/libimobiledevice/libplist) (LGPL-2.1+) ·
-[OpenSSL](https://www.openssl.org) (Apache-2.0)
+shivtools stands on these projects:
+
+| Project | By | Licence | Ships in |
+|---|---|---|---|
+| [Node.js](https://nodejs.org) | OpenJS Foundation | MIT | `com.muratkurt.nodejs` |
+| [nodejs-for-ios](https://github.com/realAndi/nodejs-for-ios) | andi | MIT | `com.muratkurt.nodejs` |
+| [Frida](https://frida.re) | Ole André Vadla Ravnås | wxWindows 3.1 | `com.muratkurt.frida`, `shivfrida` |
+| [iOS MCP](https://github.com/witchan/ios-mcp) | witchan | MIT | `com.muratkurt.ios-mcp` |
+| [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) | PaddlePaddle | Apache-2.0 | `com.muratkurt.ios-mcp` |
+| [AppSync Unified](https://github.com/akemin-dayo/AppSync) · appinst | akemin-dayo | GPL-3.0 | `com.muratkurt.ios-mcp` |
+| [ldid](https://git.saurik.com/ldid.git) | Jay Freeman (saurik) · Procursus | AGPL-3.0 | `com.muratkurt.ios-mcp` |
+| [libplist](https://github.com/libimobiledevice/libplist) | libimobiledevice | LGPL-2.1+ | `com.muratkurt.ios-mcp` |
+| [OpenSSL](https://www.openssl.org) | OpenSSL Project | Apache-2.0 | `com.muratkurt.ios-mcp` |
 
 ## Licence
 
-shivtools is released under the [MIT License](LICENSE): use it, change it, share it — keep the copyright notice.
+**shivtools** — [MIT](LICENSE). Use it, change it, share it; keep the copyright notice.
 
-Third-party components keep their own licences, listed above; their licence texts are installed under `/usr/share/doc/`. The iOS MCP package includes GPL-3.0 (AppSync Unified, appinst) and AGPL-3.0 (ldid) parts, built unmodified from [witchan/ios-mcp v1.2.8](https://github.com/witchan/ios-mcp/tree/v1.2.8) — that is where their source is.
+**Everything in the table above** keeps its own licence. The licence texts are installed with each package under `/usr/share/doc/`.
+
+**Source for the GPL and AGPL parts** (AppSync Unified, appinst, ldid in the iOS MCP package): they are built unmodified from [witchan/ios-mcp v1.2.8](https://github.com/witchan/ios-mcp/tree/v1.2.8).
