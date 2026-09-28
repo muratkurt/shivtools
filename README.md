@@ -56,6 +56,12 @@ Start from a working skeleton instead of an empty file. It refuses to write over
 
 shivtools does not include an AI. It gives the one you already run in the terminal (Claude Code, Codex, Gemini…) eyes and hands on the device, and a set of rules learned the hard way.
 
+**Quick start, no project folder.** Just tell the agent:
+
+> shivtools is installed. Find the rules file with `shiv-kurulum --goster`, read it with `cat`, and follow it for this session. Then run `shiv-ortam`.
+
+Say `cat` on purpose: on RootHide the rules live inside the jailbreak root, where some agents' file tools can't see them — the shell can. This lasts for one session; for real work, use a project folder:
+
 **1. Give the project the rules.** Make a folder for your tweak and drop the rules file in it — the agent reads it by itself when it starts there:
 
 ```
