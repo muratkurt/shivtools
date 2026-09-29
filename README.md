@@ -138,6 +138,7 @@ prints one `claude mcp add …` line. Run it, then restart the CLI.
 |---|---|
 | `shiv-mcp` | Manages the MCP server: status, on/off, listen mode, connect an agent |
 | `shiv-frida-kur` | Checks frida-server; installs only when asked explicitly |
+| `shiv-dugme` | Presses the Action Button (single, double, long) — a real press: the assigned action runs, also on the Lock Screen. `yetenek` tells whether the device has one |
 
 Every tool prints its own usage with `--help`.
 
@@ -157,7 +158,7 @@ The page is available in English, Türkçe, Deutsch, Español, Français, Italia
 
 ## iOS MCP
 
-The optional `com.muratkurt.ios-mcp` package lets an AI agent take screenshots, read the accessibility tree, tap, type, read the live system log and more.
+The optional `com.muratkurt.ios-mcp` package lets an AI agent take screenshots, read the accessibility tree, tap, type, press the Action Button, read the live system log and more.
 
 ```
 shiv-mcp durum             # installed? running? which mode?
