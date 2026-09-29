@@ -138,7 +138,7 @@ prints one `claude mcp add …` line. Run it, then restart the CLI.
 |---|---|
 | `shiv-mcp` | Manages the MCP server: status, on/off, listen mode, connect an agent |
 | `shiv-frida-kur` | Checks frida-server; installs only when asked explicitly |
-| `shiv-dugme` | Presses the Action Button (single, double, long) — a real press: the assigned action runs, also on the Lock Screen. `yetenek` tells whether the device has one |
+| `shiv-dugme` | Presses the Action Button: single, double, long. A real press — the assigned action runs |
 
 Every tool prints its own usage with `--help`.
 
