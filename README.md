@@ -19,7 +19,7 @@ Then install **shivtools**. Sileo also offers the companion packages below; each
 | `com.muratkurt.shivtools` | the tools, the rules file, the recipe book, the guide and four examples |
 | `com.muratkurt.nodejs` | Node.js 24 + npm + npx (needed only by `shiv-sinif`) |
 | `com.muratkurt.ios-mcp` | an MCP server so an AI agent can see and drive the device |
-| `com.muratkurt.frida` | frida 17 for RootHide (rootless users can take frida from `build.frida.re`) |
+| `com.muratkurt.frida` | frida 17 for rootless and RootHide (the official build; an existing `re.frida.server` works too) |
 
 ## Requirements
 
