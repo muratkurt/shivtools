@@ -16,7 +16,7 @@ Then install **shivtools**. Sileo also offers the companion packages below; each
 
 | Package | What it brings |
 |---|---|
-| `com.muratkurt.shivtools` | the tools, the rules file, the recipe book, the guide and three example tweaks |
+| `com.muratkurt.shivtools` | the tools, the rules file, the recipe book, the guide and four examples |
 | `com.muratkurt.nodejs` | Node.js 24 + npm + npx (needed only by `shiv-sinif`) |
 | `com.muratkurt.ios-mcp` | an MCP server so an AI agent can see and drive the device |
 | `com.muratkurt.frida` | frida 17 for RootHide (rootless users can take frida from `build.frida.re`) |
@@ -104,6 +104,8 @@ prints one `claude mcp add …` line. Run it, then restart the CLI.
 | `shiv-yol` | The same path in both namespaces (RootHide shell vs. real root) |
 | `shiv-kurulum` | Installs the rules file into a project |
 | `shiv-jbroot` | After a RootHide re-jailbreak, brings back your AI CLI sessions and memory. Dry run by default |
+| `shiv-kur` | What is missing (node, frida, MCP, Theos) and why; `--yap` installs it. The engine behind the setup wizard |
+| `shiv-theos-kur` | Checks for the right Theos for your jailbreak and installs it with `--kur` |
 
 **Finding the code to hook**
 
@@ -139,9 +141,19 @@ prints one `claude mcp add …` line. Run it, then restart the CLI.
 
 Every tool prints its own usage with `--help`.
 
-## Settings page
+## Settings page and setup wizard
 
-**Settings → shivtools** shows the last measurement: environment, every tool with a live status mark, quick-start commands you can tap to copy, and credits. The page reads what `shiv-ortam` measured — run `shiv-ortam` to refresh it.
+**Settings → shivtools** shows the environment with a live status mark for each part, a one-line summary of the tools (tap for the full list), quick-start commands you can tap to copy, and credits. **↻** at the top right measures again.
+
+**Setup wizard.** When something is missing, an **Install now** row appears at the top. Tap it and you see exactly what will be installed, from which repo and with which command; uncheck what you don't want, tap **Install**, and follow the live log. A small root helper (`shivtools-kurd`) does the install; it accepts only a fixed list of component names and nothing else. Theos asks for your password, so it installs from a terminal:
+
+```
+shiv-kur                  # what is missing (changes nothing)
+sudo shiv-kur node --yap  # install one component
+shiv-theos-kur --kur      # the right Theos for your device
+```
+
+The page is available in English, Türkçe, Deutsch, Español, Français, Italiano, Português, Русский and العربية.
 
 ## iOS MCP
 
@@ -169,6 +181,7 @@ Installed with the package:
   TWEAK.md          recipes with working code
   rehber/           the development guide (Turkish), and a Mac-only version
   ornekler/         01 SpringBoard hook · 02 Settings page · 03 in-app network filter
+                    04 setup wizard (install engine + root helper + live screen)
 ```
 
 `shiv-ornek --rehber` prints the paths.
