@@ -41,7 +41,8 @@ With an agent: start it in the project folder and ask in plain language. **Setti
 | `shiv-init` | Installs the rules file into a project |
 | `shiv-install` | Installs missing or outdated parts |
 | `shiv-theos-install` | Installs the right Theos for the device |
-| `shiv-class` | Classes, methods and real signatures |
+| `shiv-class` | Classes, methods and real signatures; `--where`, `--live` |
+| `shiv-trace` | Prints a line the moment a method is called |
 | `shiv-dump` | Every Objective-C class of a running app |
 | `shiv-decrypt` | Decrypts an App Store binary |
 | `shiv-screen` | The view tree of the app in front |
